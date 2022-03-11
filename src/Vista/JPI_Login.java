@@ -172,13 +172,13 @@ public class JPI_Login extends javax.swing.JFrame {
     private javax.swing.JLabel Logo_JPI;
     private javax.swing.JPanel MainFrame;
     private javax.swing.JLabel Title;
-    private javax.swing.JButton btnAcceder;
+    public javax.swing.JButton btnAcceder;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPForm;
-    private javax.swing.JTextField txtContraseña;
-    private javax.swing.JTextField txtID;
+    public javax.swing.JTextField txtContraseña;
+    public javax.swing.JTextField txtID;
     // End of variables declaration//GEN-END:variables
 }
