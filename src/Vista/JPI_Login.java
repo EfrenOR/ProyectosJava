@@ -44,7 +44,6 @@ public class JPI_Login extends javax.swing.JFrame {
         Logo_JPI = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1300, 750));
 
         MainFrame.setBackground(new java.awt.Color(49, 151, 214));
         MainFrame.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -94,6 +93,7 @@ public class JPI_Login extends javax.swing.JFrame {
         LinkRecupContra.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         LinkRecupContra.setForeground(new java.awt.Color(49, 151, 214));
         LinkRecupContra.setText("¿Olvidaste tu contraseña?");
+        LinkRecupContra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPForm.add(LinkRecupContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(702, 345, -1, -1));
 
         btnAcceder.setBackground(new java.awt.Color(1, 112, 185));
