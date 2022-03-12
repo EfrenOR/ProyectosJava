@@ -29,7 +29,7 @@ public class JPI_AgregarProducto extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
+        btnGuardar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -70,11 +70,11 @@ public class JPI_AgregarProducto extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(250, 250, 250));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton2.setBackground(new java.awt.Color(1, 112, 185));
-        jButton2.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("GUARDAR");
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(452, 635, 146, 50));
+        btnGuardar.setBackground(new java.awt.Color(1, 112, 185));
+        btnGuardar.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
+        btnGuardar.setText("GUARDAR");
+        jPanel2.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(452, 635, 146, 50));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/HeaderProductos.png"))); // NOI18N
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(78, 31, -1, -1));
@@ -290,7 +290,7 @@ public class JPI_AgregarProducto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
+    public javax.swing.JButton btnGuardar;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;

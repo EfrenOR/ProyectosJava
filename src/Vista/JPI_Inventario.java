@@ -37,6 +37,8 @@ public class JPI_Inventario extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        btnAgregar = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel4 = new javax.swing.JLabel();
@@ -49,7 +51,8 @@ public class JPI_Inventario extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        btnSalir = new javax.swing.JLabel();
+        btnSalir2 = new javax.swing.JLabel();
+        btnSalir1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -79,8 +82,8 @@ public class JPI_Inventario extends javax.swing.JFrame {
         jButton2.setBackground(new java.awt.Color(1, 112, 185));
         jButton2.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("AGREGAR PRODUCTO");
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(403, 584, 246, 50));
+        jButton2.setText("MODIFICAR");
+        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 580, 246, 50));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Header.png"))); // NOI18N
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(78, 31, -1, -1));
@@ -118,6 +121,18 @@ public class JPI_Inventario extends javax.swing.JFrame {
         );
 
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(81, 264, 890, 300));
+
+        btnAgregar.setBackground(new java.awt.Color(1, 112, 185));
+        btnAgregar.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
+        btnAgregar.setText("AGREGAR PRODUCTO");
+        jPanel2.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 580, 246, 50));
+
+        jButton4.setBackground(new java.awt.Color(1, 112, 185));
+        jButton4.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
+        jButton4.setText("ELIMINAR");
+        jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 580, 246, 50));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(248, 0, 1052, 720));
 
@@ -177,8 +192,11 @@ public class JPI_Inventario extends javax.swing.JFrame {
         jLabel12.setText("Perfil");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 565, -1, -1));
 
-        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/leave.png"))); // NOI18N
-        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(81, 605, -1, -1));
+        btnSalir2.setText("Boton 2");
+        jPanel1.add(btnSalir2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 610, -1, -1));
+
+        btnSalir1.setText("Boton 1");
+        jPanel1.add(btnSalir1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 610, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -230,9 +248,12 @@ public class JPI_Inventario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JLabel btnSalir;
+    public javax.swing.JButton btnAgregar;
+    public javax.swing.JLabel btnSalir1;
+    public javax.swing.JLabel btnSalir2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
