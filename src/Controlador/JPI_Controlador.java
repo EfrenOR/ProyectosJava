@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
 
 public class JPI_Controlador implements ActionListener{
@@ -30,25 +31,35 @@ public class JPI_Controlador implements ActionListener{
               
     }
     
+    /*Con esta clase dare función a cada Jlabel que sea clikeado implementando
+    mouse listener*/
     public void mouseListener(){
-        this.viewInv.btnSalir1.addMouseListener(new MouseAdapter() {
+        this.viewInv.btnSalir.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
-
-                System.out.print("Este es el boton 1");
-                
+                viewInv.setVisible(false);
+                viewLogin.setVisible(true);
             }
         });
         
-        this.viewInv.btnSalir2.addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent e) {
-
-                System.out.print("Este es el boton 2");
-                
+        this.viewAddProduct.btnSalir1.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e){
+                viewAddProduct.setVisible(false);
+                viewLogin.setVisible(true);
+            }
+        });
+        
+        this.viewAddProduct.btnback.addMouseListener(new MouseAdapter(){
+            public void mouseClicked(MouseEvent e){
+                viewInv.setVisible(true);
+                viewAddProduct.setVisible(false);
             }
         });
     }
     
-    @Override
+    
+    
+    /*Clase para darle las funciones correspondientes a cada uno de 
+    los botones de las vistas*/
     public void actionPerformed(ActionEvent e) {
         
         switch(e.getActionCommand()){
@@ -64,8 +75,15 @@ public class JPI_Controlador implements ActionListener{
             break;
             
             case "AGREGAR PRODUCTO":
-                viewLogin.setVisible(false);
-                viewInv.setVisible(true);
+                viewInv.setVisible(false);
+                viewAddProduct.setVisible(true);
+                
+                ArrayList<String> Marcas = new ArrayList<String>();
+
+                Marcas = model.cargarMarcas();
+                for(int i=0; i<Marcas.size(); i++){
+                    viewAddProduct.CBoxMarca.addItem(Marcas.get(i));
+                }
             break;
             
             case "GUARDAR":

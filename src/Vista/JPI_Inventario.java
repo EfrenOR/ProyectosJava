@@ -51,8 +51,7 @@ public class JPI_Inventario extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        btnSalir2 = new javax.swing.JLabel();
-        btnSalir1 = new javax.swing.JLabel();
+        btnSalir = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -192,11 +191,8 @@ public class JPI_Inventario extends javax.swing.JFrame {
         jLabel12.setText("Perfil");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 565, -1, -1));
 
-        btnSalir2.setText("Boton 2");
-        jPanel1.add(btnSalir2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 610, -1, -1));
-
-        btnSalir1.setText("Boton 1");
-        jPanel1.add(btnSalir1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 610, -1, -1));
+        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/leave.png"))); // NOI18N
+        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 598, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -249,8 +245,7 @@ public class JPI_Inventario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnAgregar;
-    public javax.swing.JLabel btnSalir1;
-    public javax.swing.JLabel btnSalir2;
+    public javax.swing.JLabel btnSalir;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;

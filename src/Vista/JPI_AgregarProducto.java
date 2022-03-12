@@ -32,23 +32,24 @@ public class JPI_AgregarProducto extends javax.swing.JFrame {
         btnGuardar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtDescripcion = new javax.swing.JTextArea();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        CBoxMarca = new javax.swing.JComboBox<>();
         jLabel18 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtUnidades = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        CBoxProveedor = new javax.swing.JComboBox<>();
+        btnback = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel4 = new javax.swing.JLabel();
@@ -61,6 +62,7 @@ public class JPI_AgregarProducto extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        btnSalir1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,10 +84,9 @@ public class JPI_AgregarProducto extends javax.swing.JFrame {
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/unsplash_circuito.png"))); // NOI18N
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(278, 125, -1, -1));
 
-        jTextField1.setBackground(new java.awt.Color(246, 246, 246));
-        jTextField1.setText("jTextField1");
-        jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(49, 151, 214)));
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(196, 313, 296, 50));
+        txtNombre.setBackground(new java.awt.Color(246, 246, 246));
+        txtNombre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(49, 151, 214)));
+        jPanel2.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(196, 313, 296, 50));
 
         jLabel12.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 0, 0));
@@ -109,10 +110,10 @@ public class JPI_AgregarProducto extends javax.swing.JFrame {
         jLabel15.setText("*");
         jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 408, 20, 20));
 
-        jTextArea1.setBackground(new java.awt.Color(246, 246, 246));
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        txtDescripcion.setBackground(new java.awt.Color(246, 246, 246));
+        txtDescripcion.setColumns(20);
+        txtDescripcion.setRows(5);
+        jScrollPane1.setViewportView(txtDescripcion);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -144,10 +145,10 @@ public class JPI_AgregarProducto extends javax.swing.JFrame {
         jLabel17.setText("*");
         jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 291, 20, 20));
 
-        jComboBox1.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Campos", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.setBorder(null);
-        jPanel2.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(558, 313, 296, 50));
+        CBoxMarca.setBackground(new java.awt.Color(255, 255, 255));
+        CBoxMarca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Marcas --" }));
+        CBoxMarca.setBorder(null);
+        jPanel2.add(CBoxMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(558, 313, 296, 50));
 
         jLabel18.setBackground(new java.awt.Color(0, 0, 0));
         jLabel18.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
@@ -155,10 +156,9 @@ public class JPI_AgregarProducto extends javax.swing.JFrame {
         jLabel18.setText("Unidades");
         jPanel2.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(558, 408, -1, -1));
 
-        jTextField2.setBackground(new java.awt.Color(246, 246, 246));
-        jTextField2.setText("jTextField1");
-        jTextField2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(49, 151, 214)));
-        jPanel2.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(558, 430, 296, 50));
+        txtUnidades.setBackground(new java.awt.Color(246, 246, 246));
+        txtUnidades.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(49, 151, 214)));
+        jPanel2.add(txtUnidades, new org.netbeans.lib.awtextra.AbsoluteConstraints(558, 430, 296, 50));
 
         jLabel19.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(255, 0, 0));
@@ -176,10 +176,13 @@ public class JPI_AgregarProducto extends javax.swing.JFrame {
         jLabel21.setText("*");
         jPanel2.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 525, 20, 20));
 
-        jComboBox2.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Campos", "Item 2", "Item 3", "Item 4" }));
-        jComboBox2.setBorder(null);
-        jPanel2.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(558, 547, 296, 50));
+        CBoxProveedor.setBackground(new java.awt.Color(255, 255, 255));
+        CBoxProveedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Proveedor --" }));
+        CBoxProveedor.setBorder(null);
+        jPanel2.add(CBoxProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(558, 547, 296, 50));
+
+        btnback.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/back.png"))); // NOI18N
+        jPanel2.add(btnback, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 116, -1, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(248, 0, 1052, 720));
 
@@ -239,6 +242,9 @@ public class JPI_AgregarProducto extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Circle_Inventario.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 620, 130, 100));
 
+        btnSalir1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/leave.png"))); // NOI18N
+        jPanel1.add(btnSalir1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 598, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -290,9 +296,11 @@ public class JPI_AgregarProducto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JComboBox<String> CBoxMarca;
+    public javax.swing.JComboBox<String> CBoxProveedor;
     public javax.swing.JButton btnGuardar;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
+    public javax.swing.JLabel btnSalir1;
+    public javax.swing.JLabel btnback;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -321,8 +329,8 @@ public class JPI_AgregarProducto extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    public javax.swing.JTextArea txtDescripcion;
+    public javax.swing.JTextField txtNombre;
+    public javax.swing.JTextField txtUnidades;
     // End of variables declaration//GEN-END:variables
 }
