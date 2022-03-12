@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -21,7 +22,31 @@ public class JPI_Modelo {
     private String Marca;
     private int Unidades;
     private String Proveedor; 
+    
+    
+    private String SQL;
+    private String table;
+    private Statement sentencia;
+    private ResultSet rst;
+    private PreparedStatement preparar;
+    private int res;
 
+    public ResultSet getRst() {
+        return rst;
+    }
+
+    public void setRst(ResultSet rst) {
+        this.rst = rst;
+    }
+
+    public int getRes() {
+        return res;
+    }
+
+    public void setRes(int res) {
+        this.res = res;
+    }    
+    
     public int getID() {
         return ID;
     }
@@ -162,4 +187,39 @@ public class JPI_Modelo {
         
         
     }
+
+    public void ConsultarDatos(String nombreTabla){
+		
+	table = nombreTabla;
+	try {
+            sentencia = con.createStatement();
+            SQL = "SELECT * FROM " + table +";" ;
+            rst = sentencia.executeQuery(SQL);
+            //rst.beforeFirst();
+	}catch (SQLException e) {
+            System.out.print("error: " + e.toString() + "\n" + SQL);
+	}
+    }
+    
+    public void ModificarDatos(String nombreTabla, String Datos[]){
+		
+        table = nombreTabla;
+	try {
+            sentencia = con.createStatement();
+            SQL = "UPDATE " + table +" SET Codigo=?, Descripcion=?, Unidades=?, Marca_Codigo=? WHERE Codigo=? " ;
+            preparar = con.prepareStatement(SQL);
+                       
+            preparar.setString(1, Datos[0]);
+            preparar.setString(2, Datos[1]);
+            preparar.setString(3, Datos[2]);
+            preparar.setString(4, Datos[3]);
+            preparar.setString(5, Datos[0]);
+                        
+            res = preparar.executeUpdate();
+            preparar.close();
+        }catch (SQLException e) {
+            System.out.print("error: " + e.toString() + "\n" + SQL);
+        }
+    }
+        
 }

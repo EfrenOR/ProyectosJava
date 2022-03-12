@@ -6,6 +6,7 @@ import Modelo.JPI_Conexion;
 import Modelo.JPI_Modelo;
 import Vista.JPI_AgregarProducto;
 import Vista.JPI_Inventario;
+import Vista.JPI_Inventario;
 import Vista.JPI_Login;
 import java.sql.Connection;
 
