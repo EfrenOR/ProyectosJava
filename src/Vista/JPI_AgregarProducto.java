@@ -42,14 +42,17 @@ public class JPI_AgregarProducto extends javax.swing.JFrame {
         txtDescripcion = new javax.swing.JTextArea();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        CBoxMarca = new javax.swing.JComboBox<>();
+        CBoxCategoria = new javax.swing.JComboBox<>();
         jLabel18 = new javax.swing.JLabel();
         txtUnidades = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
-        CBoxProveedor = new javax.swing.JComboBox<>();
+        CBoxMarca = new javax.swing.JComboBox<>();
         btnback = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        CBoxProveedor = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel4 = new javax.swing.JLabel();
@@ -76,7 +79,7 @@ public class JPI_AgregarProducto extends javax.swing.JFrame {
         btnGuardar.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
         btnGuardar.setText("GUARDAR");
-        jPanel2.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(452, 635, 146, 50));
+        jPanel2.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(452, 653, 146, 50));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/HeaderProductos.png"))); // NOI18N
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(78, 31, -1, -1));
@@ -103,12 +106,12 @@ public class JPI_AgregarProducto extends javax.swing.JFrame {
         jLabel14.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setText("Descripcion");
-        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(196, 408, -1, -1));
+        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(196, 389, -1, -1));
 
         jLabel15.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 0, 0));
         jLabel15.setText("*");
-        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 408, 20, 20));
+        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 389, 20, 20));
 
         txtDescripcion.setBackground(new java.awt.Color(246, 246, 246));
         txtDescripcion.setColumns(20);
@@ -132,56 +135,71 @@ public class JPI_AgregarProducto extends javax.swing.JFrame {
                 .addGap(0, 0, 0))
         );
 
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(196, 430, 296, 127));
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(196, 411, 296, 127));
 
         jLabel16.setBackground(new java.awt.Color(0, 0, 0));
         jLabel16.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel16.setText("Marca");
+        jLabel16.setText("Categoria");
         jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(558, 291, -1, -1));
 
         jLabel17.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 0, 0));
         jLabel17.setText("*");
-        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 291, 20, 20));
+        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 291, 20, 20));
 
-        CBoxMarca.setBackground(new java.awt.Color(255, 255, 255));
-        CBoxMarca.setBorder(null);
-        jPanel2.add(CBoxMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(558, 313, 296, 50));
+        CBoxCategoria.setBackground(new java.awt.Color(255, 255, 255));
+        CBoxCategoria.setBorder(null);
+        jPanel2.add(CBoxCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(558, 313, 296, 50));
 
         jLabel18.setBackground(new java.awt.Color(0, 0, 0));
         jLabel18.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(0, 0, 0));
         jLabel18.setText("Unidades");
-        jPanel2.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(558, 408, -1, -1));
+        jPanel2.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(558, 389, -1, -1));
 
         txtUnidades.setBackground(new java.awt.Color(246, 246, 246));
         txtUnidades.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(49, 151, 214)));
-        jPanel2.add(txtUnidades, new org.netbeans.lib.awtextra.AbsoluteConstraints(558, 430, 296, 50));
+        jPanel2.add(txtUnidades, new org.netbeans.lib.awtextra.AbsoluteConstraints(558, 411, 296, 50));
 
         jLabel19.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(255, 0, 0));
         jLabel19.setText("*");
-        jPanel2.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 408, 20, 20));
+        jPanel2.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 389, 20, 20));
 
         jLabel20.setBackground(new java.awt.Color(0, 0, 0));
         jLabel20.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel20.setText("Proveedor");
-        jPanel2.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(558, 525, -1, -1));
+        jLabel20.setText("Marca");
+        jPanel2.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(558, 487, -1, -1));
 
         jLabel21.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(255, 0, 0));
         jLabel21.setText("*");
-        jPanel2.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 525, 20, 20));
+        jPanel2.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 487, 20, 20));
 
-        CBoxProveedor.setBackground(new java.awt.Color(255, 255, 255));
-        CBoxProveedor.setBorder(null);
-        jPanel2.add(CBoxProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(558, 547, 296, 50));
+        CBoxMarca.setBackground(new java.awt.Color(255, 255, 255));
+        CBoxMarca.setBorder(null);
+        jPanel2.add(CBoxMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(558, 509, 296, 50));
 
         btnback.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/back.png"))); // NOI18N
         btnback.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel2.add(btnback, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 116, -1, -1));
+
+        jLabel22.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel22.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel22.setText("Proveedor");
+        jPanel2.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(378, 560, -1, -1));
+
+        jLabel23.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel23.setText("*");
+        jPanel2.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 560, 20, 20));
+
+        CBoxProveedor.setBackground(new java.awt.Color(255, 255, 255));
+        CBoxProveedor.setBorder(null);
+        jPanel2.add(CBoxProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(378, 582, 296, 50));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(248, 0, 1052, 720));
 
@@ -296,6 +314,7 @@ public class JPI_AgregarProducto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JComboBox<String> CBoxCategoria;
     public javax.swing.JComboBox<String> CBoxMarca;
     public javax.swing.JComboBox<String> CBoxProveedor;
     public javax.swing.JButton btnGuardar;
@@ -315,6 +334,8 @@ public class JPI_AgregarProducto extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

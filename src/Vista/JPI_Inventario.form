@@ -203,7 +203,6 @@
                           <Dimension value="[10, 10]"/>
                         </Property>
                         <Property name="rowHeight" type="int" value="30"/>
-                        <Property name="rowMargin" type="int" value="10"/>
                       </Properties>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>

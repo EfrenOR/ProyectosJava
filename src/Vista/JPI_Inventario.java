@@ -1,8 +1,13 @@
 
 package Vista;
 
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumnModel;
 
 
 public class JPI_Inventario extends javax.swing.JFrame {
@@ -10,9 +15,27 @@ public class JPI_Inventario extends javax.swing.JFrame {
 
     public JPI_Inventario() {
         initComponents();
-
     }
 
+    //Método para establecer un diseño a la tabla y llamarlo desde el controlador
+    public void tablaDiseño(){        
+        JTableHeader Header =  jTable1.getTableHeader();
+        Header.setBackground(new Color(1, 112, 185));
+        Header.setForeground(Color.white);
+        Header.setFont(new Font("Dialog", Font.BOLD, 13));
+        Header.setPreferredSize(new Dimension(20, 30));
+        
+        TableColumnModel columnModel = jTable1.getColumnModel();
+
+        columnModel.getColumn(0).setPreferredWidth(20);
+        columnModel.getColumn(1).setPreferredWidth(150);
+        columnModel.getColumn(2).setPreferredWidth(30);
+        columnModel.getColumn(3).setPreferredWidth(50);
+        columnModel.getColumn(4).setPreferredWidth(70);
+        columnModel.getColumn(5).setPreferredWidth(70);
+    }
+        
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

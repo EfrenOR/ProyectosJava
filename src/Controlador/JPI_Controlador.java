@@ -8,6 +8,8 @@ import Vista.JPI_Login;
 import java.awt.Color;
 import java.awt.Cursor;
 import static java.awt.Cursor.HAND_CURSOR;
+import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -19,12 +21,14 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumnModel;
 
 
 public class JPI_Controlador implements ActionListener, MouseListener{
 
     public boolean bandera = false;
-    public String Datos[] = new String[4];
+    public String Datos[] = new String[5];
     public JPI_Login viewLogin;
     public JPI_Inventario viewInv;
     public JPI_AgregarProducto viewAddProduct;
@@ -79,8 +83,9 @@ public class JPI_Controlador implements ActionListener, MouseListener{
         viewAddProduct.txtNombre.setText("");
         viewAddProduct.txtDescripcion.setText("");
         viewAddProduct.txtUnidades.setText("");
-        viewAddProduct.CBoxMarca.removeAllItems();
         viewAddProduct.CBoxProveedor.removeAllItems();
+        viewAddProduct.CBoxMarca.removeAllItems();
+        viewAddProduct.CBoxCategoria.removeAllItems();
     }
     
     
@@ -106,10 +111,12 @@ public class JPI_Controlador implements ActionListener, MouseListener{
                 
                 viewAddProduct.CBoxMarca.addItem("-- Marcas --");
                 viewAddProduct.CBoxProveedor.addItem("-- Proveedores --");
+                viewAddProduct.CBoxCategoria.addItem("-- Categorias --");
 
                 
                 ArrayList<String> Marcas = new ArrayList<String>();
                 ArrayList<String> Proveedores = new ArrayList<String>();
+                ArrayList<String> Categorias = new ArrayList<String>();
                 
                 Marcas = model.cargarMarcas();
                 for(int i=0; i<Marcas.size(); i++){
@@ -121,13 +128,17 @@ public class JPI_Controlador implements ActionListener, MouseListener{
                     viewAddProduct.CBoxProveedor.addItem(Proveedores.get(i));
                 }
                 
+                Categorias = model.cargarCategorias();
+                for(int i=0; i<Categorias.size(); i++){
+                    viewAddProduct.CBoxCategoria.addItem(Categorias.get(i));
+                }
 
             break;
             
             case "GUARDAR":
                 if(viewAddProduct.txtNombre.equals("")||viewAddProduct.txtDescripcion.equals("")||
                     viewAddProduct.txtUnidades.equals("")||viewAddProduct.CBoxMarca.equals("-- Marcas --")
-                    ||viewAddProduct.CBoxProveedor.equals("-- Proveedores --")){
+                    ||viewAddProduct.CBoxProveedor.equals("-- Proveedores --")||viewAddProduct.CBoxCategoria.equals("-- Categorias --")){
                     
                     JOptionPane.showMessageDialog(null, "Lleno todos los campos");
 
@@ -137,6 +148,7 @@ public class JPI_Controlador implements ActionListener, MouseListener{
                     model.setUnidades(Integer.parseInt(viewAddProduct.txtUnidades.getText()));
                     model.setMarca(viewAddProduct.CBoxMarca.getSelectedItem().toString());
                     model.setProveedor(viewAddProduct.CBoxProveedor.getSelectedItem().toString());
+                    model.setCetegoria(viewAddProduct.CBoxCategoria.getSelectedItem().toString());
                     
                     model.agregarProductos();
                     
@@ -151,7 +163,7 @@ public class JPI_Controlador implements ActionListener, MouseListener{
         int fila = viewInv.jTable1.rowAtPoint(e.getPoint());
         int columna = viewInv.jTable1.columnAtPoint(e.getPoint());
         //JOptionPane.showMessageDialog(null, "Fila: "+ fila + "Columna: "+columna);
-        if(columna ==4){
+        if(columna == 5){
             //JOptionPane.showMessageDialog(null, "Booton Modificar: Fila: "+ fila + "Columna: "+columna);
             Modificar(fila, columna);   
         }       
@@ -175,56 +187,60 @@ public class JPI_Controlador implements ActionListener, MouseListener{
     
     public void MostrarDatos(){
         DefaultTableModel MiTabla =(DefaultTableModel)viewInv.jTable1.getModel();
-        String EncabezadoTabla[]={"Codigo","Producto","Unidades","Marca","MODIFICAR","ELIMINAR"};
+        String EncabezadoTabla[]={"Codigo","Producto","Unidades","Marca","Categoria","MODIFICAR","ELIMINAR"};
         MiTabla = new DefaultTableModel(null,EncabezadoTabla);
         viewInv.jTable1.setModel(MiTabla);    
     }    
     
+    
     public void MostrarRegistroTabla(){
         try {
             model.ConsultarDatos("productos");
+            //model.Consultar("productos");
             ResultSet rst = model.getRst();
             DefaultTableModel lamismatabla= (DefaultTableModel)viewInv.jTable1.getModel();
+            
             
             int filas=viewInv.jTable1.getRowCount();
             for (int i = 0;filas>i; i++) {
                 lamismatabla.removeRow(0);
             }
             
-            String Registro[]=new String[6];
+            String Registro[]=new String[7];
             while(rst.next()){
                 
                 Registro[0]=rst.getString("Codigo");
-                Registro[1]=rst.getString("Nombre");
+                Registro[1]=rst.getString("Nombre");//Nombre del Producto
                 Registro[2]=rst.getString("Unidades");
-                Registro[3]=rst.getString("Marca_Codigo");
-                Registro[4]="Modificar";
-                Registro[5]="Eliminar";
+                Registro[3]=rst.getString("Marca_Codigo"); //Nombre de la Marca
+                Registro[4]=rst.getString("Categoria");
+                Registro[5]="Modificar";
+                Registro[6]="Eliminar";
                 lamismatabla.addRow(Registro);
             }
-        viewInv.jTable1.setModel(lamismatabla);
+            
+            viewInv.jTable1.setModel(lamismatabla);
+            viewInv.tablaDiseño();
             
         } catch (Exception e) { 
             JOptionPane.showMessageDialog(null,"Error Tabla "+ e);
         }
     }
-    
+       
     
     public void btnTabla(){
         DefaultTableCellRenderer Alinear = new DefaultTableCellRenderer();
         Alinear.setHorizontalAlignment(SwingConstants.CENTER);
         Alinear.setBackground(new Color(38,196,133));
         Alinear.setForeground(Color.WHITE);
-        viewInv.jTable1.getColumnModel().getColumn(4).setCellRenderer(Alinear);
+        viewInv.jTable1.getColumnModel().getColumn(5).setCellRenderer(Alinear);
 
         DefaultTableCellRenderer Alinear2 = new DefaultTableCellRenderer();
         Alinear2.setHorizontalAlignment(SwingConstants.CENTER);
         Alinear2.setBackground(new Color(218,44,56));
         Alinear2.setForeground(Color.WHITE);
-        viewInv.jTable1.getColumnModel().getColumn(5).setCellRenderer(Alinear2);
+        viewInv.jTable1.getColumnModel().getColumn(6).setCellRenderer(Alinear2);
         
-        Alinear.setCursor(new Cursor(HAND_CURSOR));
-
     }
 
 
