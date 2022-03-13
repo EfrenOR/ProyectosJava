@@ -71,13 +71,35 @@ public class JPI_Controlador implements ActionListener, MouseListener{
             }
         });
         
+        //LAMAN AL METODO PARA MOSTRAR REGISTROS DE LA TABLA SEGUN UNA CATEGORIA PARA ELLOS E IMPLEMENTO MOUSELISTENER/
         this.viewInv.btnCategoria1.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e){
                 MostrarRegistrosFiltro(viewInv.btnCategoria1.getText());
                 btnTabla();
+            }            
+        });    
+        
+        this.viewInv.btnCategoria2.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e){
+                MostrarRegistrosFiltro(viewInv.btnCategoria2.getText());
+                btnTabla();
+            }            
+        });
+        
+        this.viewInv.btnCategoria3.addMouseListener(new MouseAdapter(){
+            public void mouseClicked(MouseEvent e){
+                MostrarRegistrosFiltro(viewInv.btnCategoria3.getText());
+                btnTabla();
             }
-            
-        });       
+        });
+        
+        this.viewInv.btnCategoria4.addMouseListener(new MouseAdapter(){
+            public void mouseClicked(MouseEvent e){
+                MostrarRegistrosFiltro(viewInv.btnCategoria4.getText());
+                btnTabla();
+            }
+        });
+        //////////////////////////////////////////////////////////////////7
     }
     
     /*Limpiar Cajas de Texto de la vista JPI_AgregarProductos*/

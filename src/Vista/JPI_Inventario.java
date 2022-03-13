@@ -44,7 +44,7 @@ public class JPI_Inventario extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        CBoxFiltro = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
         btnAgregar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
@@ -84,10 +84,9 @@ public class JPI_Inventario extends javax.swing.JFrame {
         jButton1.setText("BUSCAR");
         jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(726, 116, 146, 50));
 
-        jComboBox2.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox2.setBorder(null);
-        jPanel2.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(809, 196, 139, 36));
+        CBoxFiltro.setBackground(new java.awt.Color(255, 255, 255));
+        CBoxFiltro.setBorder(null);
+        jPanel2.add(CBoxFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(809, 196, 139, 36));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Header.png"))); // NOI18N
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(78, 31, -1, -1));
@@ -243,14 +242,14 @@ public class JPI_Inventario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JComboBox<String> CBoxFiltro;
     public javax.swing.JButton btnAgregar;
     public javax.swing.JLabel btnCategoria1;
-    private javax.swing.JLabel btnCategoria2;
-    private javax.swing.JLabel btnCategoria3;
-    private javax.swing.JLabel btnCategoria4;
+    public javax.swing.JLabel btnCategoria2;
+    public javax.swing.JLabel btnCategoria3;
+    public javax.swing.JLabel btnCategoria4;
     public javax.swing.JLabel btnSalir;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
