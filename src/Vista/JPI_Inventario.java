@@ -54,12 +54,12 @@ public class JPI_Inventario extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel4 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        btnCategoria4 = new javax.swing.JLabel();
+        btnCategoria2 = new javax.swing.JLabel();
+        btnCategoria3 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        btnCategoria1 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         btnSalir = new javax.swing.JLabel();
@@ -111,7 +111,6 @@ public class JPI_Inventario extends javax.swing.JFrame {
         ));
         jTable1.setIntercellSpacing(new java.awt.Dimension(10, 10));
         jTable1.setRowHeight(30);
-        jTable1.setRowMargin(10);
         jScrollPane2.setViewportView(jTable1);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -147,20 +146,20 @@ public class JPI_Inventario extends javax.swing.JFrame {
         jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 125, 280, 10));
 
-        jLabel5.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Sin Categorizar");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 434, -1, -1));
+        btnCategoria4.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
+        btnCategoria4.setForeground(new java.awt.Color(255, 255, 255));
+        btnCategoria4.setText("Sin Categorizar");
+        jPanel1.add(btnCategoria4, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 434, -1, -1));
 
-        jLabel7.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Eléctrico");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 316, -1, -1));
+        btnCategoria2.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
+        btnCategoria2.setForeground(new java.awt.Color(255, 255, 255));
+        btnCategoria2.setText("Eléctrico");
+        jPanel1.add(btnCategoria2, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 316, -1, -1));
 
-        jLabel8.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Electrónica");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 375, -1, -1));
+        btnCategoria3.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
+        btnCategoria3.setForeground(new java.awt.Color(255, 255, 255));
+        btnCategoria3.setText("Electrónica");
+        jPanel1.add(btnCategoria3, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 375, -1, -1));
 
         jSeparator3.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator3.setForeground(new java.awt.Color(255, 255, 255));
@@ -172,10 +171,10 @@ public class JPI_Inventario extends javax.swing.JFrame {
         jLabel9.setText("Configuraciones");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 508, -1, 20));
 
-        jLabel10.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("Automatización");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 257, -1, -1));
+        btnCategoria1.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
+        btnCategoria1.setForeground(new java.awt.Color(255, 255, 255));
+        btnCategoria1.setText("Automatización");
+        jPanel1.add(btnCategoria1, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 257, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Circle_Inventario.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 620, 130, 100));
@@ -245,18 +244,18 @@ public class JPI_Inventario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnAgregar;
+    public javax.swing.JLabel btnCategoria1;
+    private javax.swing.JLabel btnCategoria2;
+    private javax.swing.JLabel btnCategoria3;
+    private javax.swing.JLabel btnCategoria4;
     public javax.swing.JLabel btnSalir;
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

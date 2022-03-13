@@ -364,6 +364,48 @@ public class JPI_Modelo {
         }
     }
      
+    
+    /*Este método Consulta los registros según la categoría del producto*/
+    public void ConsultarDatosFiltros(String Filtro){
+                
+        PreparedStatement ps;
+        String sql;
+        
+        int BDIdCategoria = 0;        
+        try{
+            sql="SELECT codigo FROM categorias WHERE Categoria = ?";
+            ps = con.prepareStatement(sql);
+            ps.setString(1, Filtro);
+            
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                if(rs.getRow()>0){
+                    rs = ps.executeQuery();
+                    while(rs.next()){
+                        BDIdCategoria = rs.getInt("Codigo");
+                    }
+                }
+            }
+            
+            System.out.print("id Categoria es: "+BDIdCategoria);
+
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+        }
+               
+        
+        try{
+            sentencia = con.createStatement();
+
+            sql="SELECT *FROM productos WHERE Categoria =" +BDIdCategoria+ " ;";
+            ps = con.prepareStatement(sql);
+            
+            rst = sentencia.executeQuery(sql);
+
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+        }
+    }
 }
 
 

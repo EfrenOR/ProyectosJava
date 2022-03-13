@@ -6,10 +6,6 @@ import Vista.JPI_AgregarProducto;
 import Vista.JPI_Inventario;
 import Vista.JPI_Login;
 import java.awt.Color;
-import java.awt.Cursor;
-import static java.awt.Cursor.HAND_CURSOR;
-import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -21,8 +17,6 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.JTableHeader;
-import javax.swing.table.TableColumnModel;
 
 
 public class JPI_Controlador implements ActionListener, MouseListener{
@@ -76,6 +70,14 @@ public class JPI_Controlador implements ActionListener, MouseListener{
                 MostrarRegistroTabla();//Volver a Cargar la tabla de Productos(Actualizar)
             }
         });
+        
+        this.viewInv.btnCategoria1.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e){
+                MostrarRegistrosFiltro(viewInv.btnCategoria1.getText());
+                btnTabla();
+            }
+            
+        });       
     }
     
     /*Limpiar Cajas de Texto de la vista JPI_AgregarProductos*/
@@ -262,4 +264,39 @@ public class JPI_Controlador implements ActionListener, MouseListener{
             bandera=false;
         }
     }      
+
+    /*Muestra en la tabla los registros según la categoría seleccionada en la vista*/
+    public void MostrarRegistrosFiltro(String Filtro){
+        try {
+            model.ConsultarDatosFiltros(Filtro);
+            ResultSet rst = model.getRst();
+            DefaultTableModel lamismatabla= (DefaultTableModel)viewInv.jTable1.getModel();
+            
+            
+            int filas=viewInv.jTable1.getRowCount();
+            for (int i = 0;filas>i; i++) {
+                lamismatabla.removeRow(0);
+            }
+            
+            String Registro[]=new String[7];
+            while(rst.next()){
+                
+                Registro[0]=rst.getString("Codigo");
+                Registro[1]=rst.getString("Nombre");//Nombre del Producto
+                Registro[2]=rst.getString("Unidades");
+                Registro[3]=rst.getString("Marca_Codigo"); //Nombre de la Marca
+                Registro[4]=rst.getString("Categoria");
+                Registro[5]="Modificar";
+                Registro[6]="Eliminar";
+                lamismatabla.addRow(Registro);
+            }
+            
+            viewInv.jTable1.setModel(lamismatabla);
+            viewInv.tablaDiseño();
+            
+        } catch (Exception e) { 
+            JOptionPane.showMessageDialog(null,"Error Tabla "+ e);
+            System.out.print("Error Controlador");
+        }        
+    }
 }
