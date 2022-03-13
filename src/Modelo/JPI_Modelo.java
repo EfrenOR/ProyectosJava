@@ -295,7 +295,7 @@ public class JPI_Modelo {
         table = nombreTabla;
 	try {
             sentencia = con.createStatement();
-            SQL = "UPDATE " + table +" SET Codigo=?, Descripcion=?, Unidades=?, Marca_Codigo=? WHERE Codigo=? " ;
+            SQL = "UPDATE " + table +" SET Codigo=?, Nombre=?, Unidades=?, Marca_Codigo=? WHERE Codigo=? " ;
             preparar = con.prepareStatement(SQL);
                        
             preparar.setString(1, Datos[0]);

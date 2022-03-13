@@ -6,16 +6,15 @@ import Vista.JPI_AgregarProducto;
 import Vista.JPI_Inventario;
 import Vista.JPI_Login;
 import java.awt.Color;
+import java.awt.Cursor;
+import static java.awt.Cursor.HAND_CURSOR;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.sql.ResultSet;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -70,19 +69,18 @@ public class JPI_Controlador implements ActionListener, MouseListener{
                 viewInv.setVisible(true);
                 viewAddProduct.setVisible(false);
                 limpiarCajasText();     
-                viewAddProduct.CBoxMarca.removeAllItems();
-                viewAddProduct.CBoxProveedor.removeAllItems();
-                MostrarRegistroTabla();
+                MostrarRegistroTabla();//Volver a Cargar la tabla de Productos(Actualizar)
             }
         });
     }
     
+    /*Limpiar Cajas de Texto de la vista JPI_AgregarProductos*/
     public void limpiarCajasText(){
         viewAddProduct.txtNombre.setText("");
         viewAddProduct.txtDescripcion.setText("");
         viewAddProduct.txtUnidades.setText("");
-        viewAddProduct.CBoxMarca.setSelectedIndex(0);
-        viewAddProduct.CBoxProveedor.setSelectedIndex(0);
+        viewAddProduct.CBoxMarca.removeAllItems();
+        viewAddProduct.CBoxProveedor.removeAllItems();
     }
     
     
@@ -179,8 +177,7 @@ public class JPI_Controlador implements ActionListener, MouseListener{
         DefaultTableModel MiTabla =(DefaultTableModel)viewInv.jTable1.getModel();
         String EncabezadoTabla[]={"Codigo","Producto","Unidades","Marca","MODIFICAR","ELIMINAR"};
         MiTabla = new DefaultTableModel(null,EncabezadoTabla);
-        viewInv.jTable1.setModel(MiTabla);
-                
+        viewInv.jTable1.setModel(MiTabla);    
     }    
     
     public void MostrarRegistroTabla(){
@@ -198,7 +195,7 @@ public class JPI_Controlador implements ActionListener, MouseListener{
             while(rst.next()){
                 
                 Registro[0]=rst.getString("Codigo");
-                Registro[1]=rst.getString("Descripcion");
+                Registro[1]=rst.getString("Nombre");
                 Registro[2]=rst.getString("Unidades");
                 Registro[3]=rst.getString("Marca_Codigo");
                 Registro[4]="Modificar";
@@ -219,13 +216,15 @@ public class JPI_Controlador implements ActionListener, MouseListener{
         Alinear.setBackground(new Color(38,196,133));
         Alinear.setForeground(Color.WHITE);
         viewInv.jTable1.getColumnModel().getColumn(4).setCellRenderer(Alinear);
-        
+
         DefaultTableCellRenderer Alinear2 = new DefaultTableCellRenderer();
         Alinear2.setHorizontalAlignment(SwingConstants.CENTER);
         Alinear2.setBackground(new Color(218,44,56));
         Alinear2.setForeground(Color.WHITE);
         viewInv.jTable1.getColumnModel().getColumn(5).setCellRenderer(Alinear2);
         
+        Alinear.setCursor(new Cursor(HAND_CURSOR));
+
     }
 
 

@@ -180,6 +180,7 @@ public class JPI_AgregarProducto extends javax.swing.JFrame {
         jPanel2.add(CBoxProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(558, 547, 296, 50));
 
         btnback.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/back.png"))); // NOI18N
+        btnback.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel2.add(btnback, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 116, -1, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(248, 0, 1052, 720));
@@ -241,6 +242,7 @@ public class JPI_AgregarProducto extends javax.swing.JFrame {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 620, 130, 100));
 
         btnSalir1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/leave.png"))); // NOI18N
+        btnSalir1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(btnSalir1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 598, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
