@@ -1,11 +1,15 @@
 
 package Controlador;
 
+import Material.TextPrompt;
 import Modelo.JPI_Modelo;
 import Vista.JPI_AgregarProducto;
 import Vista.JPI_Inventario;
 import Vista.JPI_Login;
 import java.awt.Color;
+import java.awt.Cursor;
+import static java.awt.Cursor.CROSSHAIR_CURSOR;
+import static java.awt.Frame.TEXT_CURSOR;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -71,7 +75,8 @@ public class JPI_Controlador implements ActionListener, MouseListener{
             }
         });
         
-        //LAMAN AL METODO PARA MOSTRAR REGISTROS DE LA TABLA SEGUN UNA CATEGORIA PARA ELLOS E IMPLEMENTO MOUSELISTENER/
+        /*LAMAN AL METODO PARA MOSTRAR REGISTROS DE LA TABLA SEGUN UNA CATEGORIA 
+        PARA ELLOS E IMPLEMENTO MOUSELISTENER; ESTAS PERTENCE A LA VISTA JPI_INVENTARIO*/
         this.viewInv.btnCategoria1.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e){
                 MostrarRegistrosFiltro(viewInv.btnCategoria1.getText());
@@ -95,14 +100,52 @@ public class JPI_Controlador implements ActionListener, MouseListener{
                 MostrarRegistrosFiltro(viewInv.btnCategoria4.getText());
             }
         });
+        
+        
+        /*LAMAN AL METODO PARA MOSTRAR REGISTROS DE LA TABLA SEGUN UNA CATEGORIA 
+        PARA ELLOS E IMPLEMENTO MOUSELISTENER; ESTAS PERTENCE A LA VISTA JPI_AGREGAPRODUCTO*/
+        this.viewAddProduct.btnCategoria1.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e){
+                viewAddProduct.setVisible(false);
+                viewInv.setVisible(true);
+                MostrarRegistrosFiltro(viewInv.btnCategoria1.getText());
+            }            
+        });    
+        
+        this.viewAddProduct.btnCategoria2.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e){
+                viewAddProduct.setVisible(false);
+                viewInv.setVisible(true);
+                MostrarRegistrosFiltro(viewInv.btnCategoria2.getText());
+            }            
+        });
+        
+        this.viewAddProduct.btnCategoria3.addMouseListener(new MouseAdapter(){
+            public void mouseClicked(MouseEvent e){
+                viewAddProduct.setVisible(false);
+                viewInv.setVisible(true);
+                MostrarRegistrosFiltro(viewInv.btnCategoria3.getText());
+            }
+        });
+        
+        this.viewAddProduct.btnCategoria4.addMouseListener(new MouseAdapter(){
+            public void mouseClicked(MouseEvent e){
+                viewAddProduct.setVisible(false);
+                viewInv.setVisible(true);
+                MostrarRegistrosFiltro(viewInv.btnCategoria4.getText());
+            }
+        });
         //////////////////////////////////////////////////////////////////
         
         
         this.viewInv.btnFiltrar.addMouseListener(new MouseAdapter(){
-            public void mouseClicked(MouseEvent e){
+            public void mouseClicked(MouseEvent e){               
                 String Categoria = viewInv.CBoxFiltro.getSelectedItem().toString();
-                MostrarRegistrosFiltro(Categoria);
-                
+                if(Categoria.equals("-- Filtros --")){
+                    MostrarRegistroTabla();
+                }else{
+                    MostrarRegistrosFiltro(Categoria);
+                }                
             }
         });
     }
