@@ -387,8 +387,6 @@ public class JPI_Modelo {
                 }
             }
             
-            System.out.print("id Categoria es: "+BDIdCategoria);
-
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
         }

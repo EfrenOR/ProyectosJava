@@ -50,6 +50,7 @@ public class JPI_Inventario extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        btnFiltrar = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel4 = new javax.swing.JLabel();
@@ -86,7 +87,7 @@ public class JPI_Inventario extends javax.swing.JFrame {
 
         CBoxFiltro.setBackground(new java.awt.Color(255, 255, 255));
         CBoxFiltro.setBorder(null);
-        jPanel2.add(CBoxFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(809, 196, 139, 36));
+        jPanel2.add(CBoxFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 196, 139, 36));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Header.png"))); // NOI18N
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(78, 31, -1, -1));
@@ -125,6 +126,10 @@ public class JPI_Inventario extends javax.swing.JFrame {
 
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(81, 264, 890, 300));
 
+        btnFiltrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search.png"))); // NOI18N
+        btnFiltrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel2.add(btnFiltrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 200, -1, -1));
+
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(248, 0, 1052, 720));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo.png"))); // NOI18N
@@ -148,16 +153,19 @@ public class JPI_Inventario extends javax.swing.JFrame {
         btnCategoria4.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         btnCategoria4.setForeground(new java.awt.Color(255, 255, 255));
         btnCategoria4.setText("Sin Categorizar");
+        btnCategoria4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(btnCategoria4, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 434, -1, -1));
 
         btnCategoria2.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         btnCategoria2.setForeground(new java.awt.Color(255, 255, 255));
         btnCategoria2.setText("Eléctrico");
+        btnCategoria2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(btnCategoria2, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 316, -1, -1));
 
         btnCategoria3.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         btnCategoria3.setForeground(new java.awt.Color(255, 255, 255));
         btnCategoria3.setText("Electrónica");
+        btnCategoria3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(btnCategoria3, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 375, -1, -1));
 
         jSeparator3.setBackground(new java.awt.Color(255, 255, 255));
@@ -173,6 +181,7 @@ public class JPI_Inventario extends javax.swing.JFrame {
         btnCategoria1.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         btnCategoria1.setForeground(new java.awt.Color(255, 255, 255));
         btnCategoria1.setText("Automatización");
+        btnCategoria1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(btnCategoria1, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 257, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Circle_Inventario.png"))); // NOI18N
@@ -248,6 +257,7 @@ public class JPI_Inventario extends javax.swing.JFrame {
     public javax.swing.JLabel btnCategoria2;
     public javax.swing.JLabel btnCategoria3;
     public javax.swing.JLabel btnCategoria4;
+    public javax.swing.JLabel btnFiltrar;
     public javax.swing.JLabel btnSalir;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;

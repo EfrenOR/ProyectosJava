@@ -75,31 +75,36 @@ public class JPI_Controlador implements ActionListener, MouseListener{
         this.viewInv.btnCategoria1.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e){
                 MostrarRegistrosFiltro(viewInv.btnCategoria1.getText());
-                btnTabla();
             }            
         });    
         
         this.viewInv.btnCategoria2.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e){
                 MostrarRegistrosFiltro(viewInv.btnCategoria2.getText());
-                btnTabla();
             }            
         });
         
         this.viewInv.btnCategoria3.addMouseListener(new MouseAdapter(){
             public void mouseClicked(MouseEvent e){
                 MostrarRegistrosFiltro(viewInv.btnCategoria3.getText());
-                btnTabla();
             }
         });
         
         this.viewInv.btnCategoria4.addMouseListener(new MouseAdapter(){
             public void mouseClicked(MouseEvent e){
                 MostrarRegistrosFiltro(viewInv.btnCategoria4.getText());
-                btnTabla();
             }
         });
-        //////////////////////////////////////////////////////////////////7
+        //////////////////////////////////////////////////////////////////
+        
+        
+        this.viewInv.btnFiltrar.addMouseListener(new MouseAdapter(){
+            public void mouseClicked(MouseEvent e){
+                String Categoria = viewInv.CBoxFiltro.getSelectedItem().toString();
+                MostrarRegistrosFiltro(Categoria);
+                
+            }
+        });
     }
     
     /*Limpiar Cajas de Texto de la vista JPI_AgregarProductos*/
@@ -121,11 +126,26 @@ public class JPI_Controlador implements ActionListener, MouseListener{
             case "ACCEDER":
                 model.setID(Integer.parseInt(viewLogin.txtID.getText()));
                 model.setConstraseña(viewLogin.txtContraseña.getText());
-                
+                              
                 boolean res = model.autenticar();
                 if(res == true){
+                    
                     viewLogin.setVisible(false);
                     viewInv.setVisible(true);
+                    
+                    /*Llenamos el ComboBox de Filtros con las categorias que hay 
+                    en la tabla categorias de la BD*/
+                    
+                    viewInv.CBoxFiltro.removeAllItems();//Reinciamos el comboBox cada que se inicio el sistema.
+                    viewInv.CBoxFiltro.addItem("-- Filtros --");
+                    
+                    ArrayList<String> Categorias = new ArrayList<String>();
+                    
+                    Categorias = model.cargarCategorias();//Método que obtinene todas las categoriad de la BD
+                        for(int i=0; i<Categorias.size(); i++){
+                        viewInv.CBoxFiltro.addItem(Categorias.get(i)); //Se llena el ComboBox
+                    }
+                        
                 }                
             break;
             
