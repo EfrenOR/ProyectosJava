@@ -12,7 +12,10 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -61,14 +64,26 @@ public class JPI_Controlador implements ActionListener, MouseListener{
             }
         });
         
+        //Boton del la vista JPI_AgregarProductos para regresar al Inventario
         this.viewAddProduct.btnback.addMouseListener(new MouseAdapter(){
             public void mouseClicked(MouseEvent e){
                 viewInv.setVisible(true);
                 viewAddProduct.setVisible(false);
+                limpiarCajasText();     
+                viewAddProduct.CBoxMarca.removeAllItems();
+                viewAddProduct.CBoxProveedor.removeAllItems();
+                MostrarRegistroTabla();
             }
         });
     }
     
+    public void limpiarCajasText(){
+        viewAddProduct.txtNombre.setText("");
+        viewAddProduct.txtDescripcion.setText("");
+        viewAddProduct.txtUnidades.setText("");
+        viewAddProduct.CBoxMarca.setSelectedIndex(0);
+        viewAddProduct.CBoxProveedor.setSelectedIndex(0);
+    }
     
     
     /*Clase para darle las funciones correspondientes a cada uno de 
@@ -91,19 +106,44 @@ public class JPI_Controlador implements ActionListener, MouseListener{
                 viewInv.setVisible(false);
                 viewAddProduct.setVisible(true);
                 
-                ArrayList<String> Marcas = new ArrayList<String>();
+                viewAddProduct.CBoxMarca.addItem("-- Marcas --");
+                viewAddProduct.CBoxProveedor.addItem("-- Proveedores --");
 
+                
+                ArrayList<String> Marcas = new ArrayList<String>();
+                ArrayList<String> Proveedores = new ArrayList<String>();
+                
                 Marcas = model.cargarMarcas();
                 for(int i=0; i<Marcas.size(); i++){
                     viewAddProduct.CBoxMarca.addItem(Marcas.get(i));
                 }
+                
+                Proveedores = model.cargarProveedores();
+                for(int i=0; i<Proveedores.size(); i++){
+                    viewAddProduct.CBoxProveedor.addItem(Proveedores.get(i));
+                }
+                
+
             break;
             
             case "GUARDAR":
-                /*Implementación del método agregar productos a la base de datos
-                */
-                
-                
+                if(viewAddProduct.txtNombre.equals("")||viewAddProduct.txtDescripcion.equals("")||
+                    viewAddProduct.txtUnidades.equals("")||viewAddProduct.CBoxMarca.equals("-- Marcas --")
+                    ||viewAddProduct.CBoxProveedor.equals("-- Proveedores --")){
+                    
+                    JOptionPane.showMessageDialog(null, "Lleno todos los campos");
+
+                }else{
+                    model.setNombre(viewAddProduct.txtNombre.getText());
+                    model.setDescripcion(viewAddProduct.txtDescripcion.getText());
+                    model.setUnidades(Integer.parseInt(viewAddProduct.txtUnidades.getText()));
+                    model.setMarca(viewAddProduct.CBoxMarca.getSelectedItem().toString());
+                    model.setProveedor(viewAddProduct.CBoxProveedor.getSelectedItem().toString());
+                    
+                    model.agregarProductos();
+                    
+                    limpiarCajasText();
+                }                
             break;
         }
     }

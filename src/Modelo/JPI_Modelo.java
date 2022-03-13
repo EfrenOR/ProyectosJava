@@ -6,7 +6,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 
@@ -94,6 +97,14 @@ public class JPI_Modelo {
     public void setProveedor(String Proveedor) {
         this.Proveedor = Proveedor;
     }
+
+    public int getUnidades() {
+        return Unidades;
+    }
+
+    public void setUnidades(int Unidades) {
+        this.Unidades = Unidades;
+    }
     
     
     
@@ -154,15 +165,17 @@ public class JPI_Modelo {
     }
     
     /*Cargar las opciones de los diferentes proveedores de los productos al
-    combobx Vista: JPI_AgregarProducto
-    public String cargarProveedores(){
-        String DBProveedores = null;
+    combobx Vista: JPI_AgregarProducto*/
+    public ArrayList<String> cargarProveedores(){
         
+        String DBProveedor = null;
+        ArrayList<String> Proveedores = new ArrayList<String>();
+
         PreparedStatement ps;
         String sql;
         
         try{
-            sql = "SELECT *FROM marca";
+            sql = "SELECT *FROM proveedores";
             ps = con.prepareStatement(sql);
             
             ResultSet rs = ps.executeQuery();
@@ -171,23 +184,99 @@ public class JPI_Modelo {
                 if(rs.getRow()>0){
                     rs = ps.executeQuery();
                     while(rs.next()){
-                        DBMarca = rs.getString("Nombre");                        
+                        DBProveedor = rs.getString("Empresa");
+                        Proveedores.add(DBProveedor);
                     }
                 }
             }
         }catch(SQLException e){
-        
+            JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
         }
-   
-        return null;
+        
+        return Proveedores;
     }
-    */
+    
+    
     /*AGREGAR PRODUCTOS*/
     public void agregarProductos(){
+                
+        PreparedStatement ps;
+        String sql;
         
+        ///PRIMERO IDENTIFICO LOS ID DE LA MARCA Y EL PROVEEDOR SELECCIONADO EN LOS COMBOBOX///
+        int BDIdMarca = 0;
+        int BDIdProveedor = 0;
         
-    }
+        try{
+            sql="SELECT Codigo FROM marca WHERE Nombre=?";
+            ps = con.prepareStatement(sql);
+            ps.setString(1, this.Marca);
+            
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                if(rs.getRow()>0){
+                    rs = ps.executeQuery();
+                    while(rs.next()){
+                        BDIdMarca = rs.getInt("Codigo");
+                    }
+                }
+            }
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+        }
 
+        try{
+            sql="SELECT Codigo FROM proveedores WHERE Empresa=?";
+            ps = con.prepareStatement(sql);
+            ps.setString(1, this.Proveedor);
+            
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                if(rs.getRow()>0){
+                    rs = ps.executeQuery();
+                    while(rs.next()){
+                        BDIdProveedor = rs.getInt("Codigo");
+                    }
+                }
+            }
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+        }
+        
+        /////////////////////////////////////////////////////////////////////7
+        
+        
+        //OBTENER LA FECHA ACTUAL//////////////////////
+        SimpleDateFormat DF = new SimpleDateFormat("dd-MM-yyyy"); //Establecer Formato para mostrar la fecha
+        Calendar calendar = Calendar.getInstance();
+
+        Date dateObj = calendar.getTime();
+        String Fecha = DF.format(dateObj);
+        ///////////////////////////////////////////////
+        
+        try{
+            sql = "INSERT INTO productos(Fecha, Nombre, Unidades, Descripcion, Proveedores_Codigo, Marca_Codigo) VALUES(?, ?, ?, ?, ?, ?)";
+            ps = con.prepareStatement(sql);
+            
+            ps.setString(1, Fecha);
+            ps.setString(2, this.Nombre);
+            ps.setInt(3, this.Unidades);
+            ps.setString(4, this.Descripcion);
+            
+            /*Paso como parametros los ID de la marca y proeveedor seleccionados porque estos son llaves foranesas en 
+            la BD*/
+            ps.setInt(5, BDIdProveedor);
+            ps.setInt(6, BDIdMarca); 
+
+            
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Registro nuevo agregado");
+
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+        }
+    }
+ 
     public void ConsultarDatos(String nombreTabla){
 		
 	table = nombreTabla;

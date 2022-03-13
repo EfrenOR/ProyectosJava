@@ -32,10 +32,8 @@ public class JPI_Inventario extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jComboBox2 = new javax.swing.JComboBox<>();
-        jButton2 = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         btnAgregar = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -78,12 +76,6 @@ public class JPI_Inventario extends javax.swing.JFrame {
         jComboBox2.setBorder(null);
         jPanel2.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(809, 196, 139, 36));
 
-        jButton2.setBackground(new java.awt.Color(1, 112, 185));
-        jButton2.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("MODIFICAR");
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 580, 246, 50));
-
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Header.png"))); // NOI18N
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(78, 31, -1, -1));
 
@@ -93,20 +85,25 @@ public class JPI_Inventario extends javax.swing.JFrame {
         btnAgregar.setText("AGREGAR PRODUCTO");
         jPanel2.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 580, 246, 50));
 
-        jButton4.setBackground(new java.awt.Color(1, 112, 185));
-        jButton4.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("ELIMINAR");
-        jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 580, 246, 50));
-
         jTable1.setBackground(new java.awt.Color(255, 255, 255));
         jTable1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, "Modificar", "Eliminar"},
-                {null, null, null, null, "Modificar", "Eliminar"},
-                {null, null, null, null, "Modificar", "Eliminar"},
-                {null, null, null, null, "Modificar", "Eliminar"}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6"
@@ -267,8 +264,6 @@ public class JPI_Inventario extends javax.swing.JFrame {
     public javax.swing.JButton btnAgregar;
     public javax.swing.JLabel btnSalir;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

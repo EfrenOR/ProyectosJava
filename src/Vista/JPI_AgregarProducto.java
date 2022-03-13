@@ -146,7 +146,6 @@ public class JPI_AgregarProducto extends javax.swing.JFrame {
         jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 291, 20, 20));
 
         CBoxMarca.setBackground(new java.awt.Color(255, 255, 255));
-        CBoxMarca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Marcas --" }));
         CBoxMarca.setBorder(null);
         jPanel2.add(CBoxMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(558, 313, 296, 50));
 
@@ -177,7 +176,6 @@ public class JPI_AgregarProducto extends javax.swing.JFrame {
         jPanel2.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 525, 20, 20));
 
         CBoxProveedor.setBackground(new java.awt.Color(255, 255, 255));
-        CBoxProveedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Proveedor --" }));
         CBoxProveedor.setBorder(null);
         jPanel2.add(CBoxProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(558, 547, 296, 50));
 
