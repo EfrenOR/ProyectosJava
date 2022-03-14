@@ -50,7 +50,7 @@ public class JPI_Inventario extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         PanelWhite = new javax.swing.JPanel();
         txtBuscar = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnBuscar = new javax.swing.JButton();
         CBoxFiltro = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
         btnAgregar = new javax.swing.JButton();
@@ -89,11 +89,11 @@ public class JPI_Inventario extends javax.swing.JFrame {
         txtBuscar.setOpaque(false);
         PanelWhite.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 116, 518, 50));
 
-        jButton1.setBackground(new java.awt.Color(1, 112, 185));
-        jButton1.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("BUSCAR");
-        PanelWhite.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(726, 116, 146, 50));
+        btnBuscar.setBackground(new java.awt.Color(1, 112, 185));
+        btnBuscar.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
+        btnBuscar.setText("BUSCAR");
+        PanelWhite.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(726, 116, 146, 50));
 
         CBoxFiltro.setBackground(new java.awt.Color(255, 255, 255));
         CBoxFiltro.setBorder(null);
@@ -264,13 +264,13 @@ public class JPI_Inventario extends javax.swing.JFrame {
     public javax.swing.JComboBox<String> CBoxFiltro;
     public javax.swing.JPanel PanelWhite;
     public javax.swing.JButton btnAgregar;
+    public javax.swing.JButton btnBuscar;
     public javax.swing.JLabel btnCategoria1;
     public javax.swing.JLabel btnCategoria2;
     public javax.swing.JLabel btnCategoria3;
     public javax.swing.JLabel btnCategoria4;
     public javax.swing.JLabel btnFiltrar;
     public javax.swing.JLabel btnSalir;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

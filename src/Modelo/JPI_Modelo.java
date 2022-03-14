@@ -404,6 +404,20 @@ public class JPI_Modelo {
             JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
         }
     }
+    
+    public void Buscar(String txtBuscar){
+		
+	table = txtBuscar;
+	try {
+            sentencia = con.createStatement();
+            SQL = "SELECT * FROM productos WHERE Nombre LIKE '%"+table+"%'" ;
+            rst = sentencia.executeQuery(SQL);
+            //rst.beforeFirst();
+	}catch (SQLException e) {
+            System.out.print("Error al buscar: " + e.toString() + "\n" + SQL);
+	}
+    }
+
 }
 
 

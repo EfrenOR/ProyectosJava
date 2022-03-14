@@ -1,18 +1,13 @@
 
 package Controlador;
 
-import Material.TextPrompt;
 import Modelo.JPI_Modelo;
 import Vista.JPI_AgregarProducto;
 import Vista.JPI_Inventario;
 import Vista.JPI_Login;
 import java.awt.Color;
-import java.awt.Cursor;
-import static java.awt.Cursor.CROSSHAIR_CURSOR;
-import static java.awt.Frame.TEXT_CURSOR;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.sql.ResultSet;
@@ -40,7 +35,24 @@ public class JPI_Controlador implements ActionListener, MouseListener{
         this.viewLogin.btnAcceder.addActionListener(this);
         this.viewInv.btnAgregar.addActionListener(this);
         this.viewAddProduct.btnGuardar.addActionListener(this);
+        this.viewInv.btnBuscar.addActionListener(this);
+
         this.viewInv.jTable1.addMouseListener(this);
+
+        this.viewInv.btnSalir.addMouseListener(this);
+        this.viewInv.btnCategoria1.addMouseListener(this);
+        this.viewInv.btnCategoria2.addMouseListener(this);
+        this.viewInv.btnCategoria3.addMouseListener(this);
+        this.viewInv.btnCategoria4.addMouseListener(this);
+        this.viewInv.btnFiltrar.addMouseListener(this);
+
+        this.viewAddProduct.btnCategoria1.addMouseListener(this);
+        this.viewAddProduct.btnCategoria2.addMouseListener(this);
+        this.viewAddProduct.btnCategoria3.addMouseListener(this);
+        this.viewAddProduct.btnCategoria4.addMouseListener(this);
+        this.viewAddProduct.btnSalir1.addMouseListener(this);
+        this.viewAddProduct.btnback.addMouseListener(this);
+
 
         MostrarDatos();
         MostrarRegistroTabla();
@@ -48,122 +60,28 @@ public class JPI_Controlador implements ActionListener, MouseListener{
         viewInv.jTable1.setEnabled(false);
     }
     
-    /*Con esta clase dare función a cada Jlabel que sea clikeado implementando
-    mouse listener*/
-    public void mouseListener(){
-        this.viewInv.btnSalir.addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent e) {
-                viewInv.setVisible(false);
-                viewLogin.setVisible(true);
-            }
-        });
-        
-        this.viewAddProduct.btnSalir1.addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent e){
-                viewAddProduct.setVisible(false);
-                viewLogin.setVisible(true);
-            }
-        });
-        
-        //Boton del la vista JPI_AgregarProductos para regresar al Inventario
-        this.viewAddProduct.btnback.addMouseListener(new MouseAdapter(){
-            public void mouseClicked(MouseEvent e){
-                viewInv.setVisible(true);
-                viewAddProduct.setVisible(false);
-                limpiarCajasText();     
-                MostrarRegistroTabla();//Volver a Cargar la tabla de Productos(Actualizar)
-            }
-        });
-        
-        /*LAMAN AL METODO PARA MOSTRAR REGISTROS DE LA TABLA SEGUN UNA CATEGORIA 
-        PARA ELLOS E IMPLEMENTO MOUSELISTENER; ESTAS PERTENCE A LA VISTA JPI_INVENTARIO*/
-        this.viewInv.btnCategoria1.addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent e){
-                MostrarRegistrosFiltro(viewInv.btnCategoria1.getText());
-            }            
-        });    
-        
-        this.viewInv.btnCategoria2.addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent e){
-                MostrarRegistrosFiltro(viewInv.btnCategoria2.getText());
-            }            
-        });
-        
-        this.viewInv.btnCategoria3.addMouseListener(new MouseAdapter(){
-            public void mouseClicked(MouseEvent e){
-                MostrarRegistrosFiltro(viewInv.btnCategoria3.getText());
-            }
-        });
-        
-        this.viewInv.btnCategoria4.addMouseListener(new MouseAdapter(){
-            public void mouseClicked(MouseEvent e){
-                MostrarRegistrosFiltro(viewInv.btnCategoria4.getText());
-            }
-        });
-        
-        
-        /*LAMAN AL METODO PARA MOSTRAR REGISTROS DE LA TABLA SEGUN UNA CATEGORIA 
-        PARA ELLOS E IMPLEMENTO MOUSELISTENER; ESTAS PERTENCE A LA VISTA JPI_AGREGAPRODUCTO*/
-        this.viewAddProduct.btnCategoria1.addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent e){
-                viewAddProduct.setVisible(false);
-                viewInv.setVisible(true);
-                MostrarRegistrosFiltro(viewInv.btnCategoria1.getText());
-            }            
-        });    
-        
-        this.viewAddProduct.btnCategoria2.addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent e){
-                viewAddProduct.setVisible(false);
-                viewInv.setVisible(true);
-                MostrarRegistrosFiltro(viewInv.btnCategoria2.getText());
-            }            
-        });
-        
-        this.viewAddProduct.btnCategoria3.addMouseListener(new MouseAdapter(){
-            public void mouseClicked(MouseEvent e){
-                viewAddProduct.setVisible(false);
-                viewInv.setVisible(true);
-                MostrarRegistrosFiltro(viewInv.btnCategoria3.getText());
-            }
-        });
-        
-        this.viewAddProduct.btnCategoria4.addMouseListener(new MouseAdapter(){
-            public void mouseClicked(MouseEvent e){
-                viewAddProduct.setVisible(false);
-                viewInv.setVisible(true);
-                MostrarRegistrosFiltro(viewInv.btnCategoria4.getText());
-            }
-        });
-        //////////////////////////////////////////////////////////////////
-        
-        
-        this.viewInv.btnFiltrar.addMouseListener(new MouseAdapter(){
-            public void mouseClicked(MouseEvent e){               
-                String Categoria = viewInv.CBoxFiltro.getSelectedItem().toString();
-                if(Categoria.equals("-- Filtros --")){
-                    MostrarRegistroTabla();
-                }else{
-                    MostrarRegistrosFiltro(Categoria);
-                }                
-            }
-        });
-    }
     
     /*Limpiar Cajas de Texto de la vista JPI_AgregarProductos*/
     public void limpiarCajasText(){
         viewAddProduct.txtNombre.setText("");
         viewAddProduct.txtDescripcion.setText("");
         viewAddProduct.txtUnidades.setText("");
-        viewAddProduct.CBoxProveedor.removeAllItems();
-        viewAddProduct.CBoxMarca.removeAllItems();
-        viewAddProduct.CBoxCategoria.removeAllItems();
+        viewAddProduct.CBoxProveedor.setSelectedIndex(0);
+        viewAddProduct.CBoxMarca.setSelectedIndex(0);
+        viewAddProduct.CBoxCategoria.setSelectedIndex(0);
     }
     
     
     /*Clase para darle las funciones correspondientes a cada uno de 
     los botones de las vistas*/
     public void actionPerformed(ActionEvent e) {
+        
+        if(e.getSource()==viewInv.btnBuscar){
+            model.Buscar(viewInv.txtBuscar.getText());
+            MostrarDatos();
+            MostrarRegistroTabla_Buscar();
+            btnTabla();
+        }
         
         switch(e.getActionCommand()){
             case "ACCEDER":
@@ -175,6 +93,9 @@ public class JPI_Controlador implements ActionListener, MouseListener{
                     
                     viewLogin.setVisible(false);
                     viewInv.setVisible(true);
+                    
+                    MostrarRegistroTabla();
+
                     
                     /*Llenamos el ComboBox de Filtros con las categorias que hay 
                     en la tabla categorias de la BD*/
@@ -239,13 +160,19 @@ public class JPI_Controlador implements ActionListener, MouseListener{
                     
                     model.agregarProductos();
                     
+                    viewAddProduct.CBoxCategoria.removeAllItems();
+                    viewAddProduct.CBoxMarca.removeAllItems();
+                    viewAddProduct.CBoxProveedor.removeAllItems();
                     limpiarCajasText();
                 }                
             break;
+
         }
     }
 
-    @Override
+    
+    /*Con esta clase dare función a cada Jlabel y a los botones de la tabla que sean 
+    clikeados, implementando mouse listener*/
     public void mouseClicked(MouseEvent e){
         int fila = viewInv.jTable1.rowAtPoint(e.getPoint());
         int columna = viewInv.jTable1.columnAtPoint(e.getPoint());
@@ -253,7 +180,71 @@ public class JPI_Controlador implements ActionListener, MouseListener{
         if(columna == 5){
             //JOptionPane.showMessageDialog(null, "Booton Modificar: Fila: "+ fila + "Columna: "+columna);
             Modificar(fila, columna);   
-        }       
+        }
+        
+        if(e.getSource()== viewInv.btnSalir){
+            viewInv.setVisible(false);
+            viewLogin.setVisible(true);
+        }      
+        if(e.getSource() == viewAddProduct.btnSalir1){
+            viewAddProduct.setVisible(false);
+            viewLogin.setVisible(true);
+        }
+        //Boton del la vista JPI_AgregarProductos para regresar al Inventario
+        if(e.getSource() == viewAddProduct.btnback){
+            viewInv.setVisible(true);
+            viewAddProduct.setVisible(false);
+            limpiarCajasText();     
+            MostrarRegistroTabla();//Volver a Cargar la tabla de Productos(Actualizar)            
+        }
+        
+        /*LAMAN AL METODO PARA MOSTRAR REGISTROS DE LA TABLA SEGUN UNA CATEGORIA 
+        PARA ELLOS E IMPLEMENTO MOUSELISTENER; ESTAS PERTENCE A LA VISTA JPI_INVENTARIO*/
+        if(e.getSource()== viewInv.btnCategoria1){
+            MostrarRegistrosFiltro(viewInv.btnCategoria1.getText());    
+        }
+        if(e.getSource()== viewInv.btnCategoria2){
+            MostrarRegistrosFiltro(viewInv.btnCategoria2.getText());                       
+        }        
+        if(e.getSource()== viewInv.btnCategoria3){
+            MostrarRegistrosFiltro(viewInv.btnCategoria3.getText());                       
+        }    
+        if(e.getSource()== viewInv.btnCategoria4){
+            MostrarRegistrosFiltro(viewInv.btnCategoria4.getText());                       
+        } 
+        
+        /*LAMAN AL METODO PARA MOSTRAR REGISTROS DE LA TABLA SEGUN UNA CATEGORIA 
+        PARA ELLOS E IMPLEMENTO MOUSELISTENER; ESTAS PERTENCE A LA VISTA JPI_AGREGAPRODUCTO*/
+        if(e.getSource() == viewAddProduct.btnCategoria1){
+            viewAddProduct.setVisible(false);
+            viewInv.setVisible(true);
+            MostrarRegistrosFiltro(viewInv.btnCategoria1.getText());            
+        }
+        if(e.getSource() == viewAddProduct.btnCategoria2){
+            viewAddProduct.setVisible(false);
+            viewInv.setVisible(true);
+            MostrarRegistrosFiltro(viewInv.btnCategoria2.getText());            
+        }
+        if(e.getSource() == viewAddProduct.btnCategoria3){
+            viewAddProduct.setVisible(false);
+            viewInv.setVisible(true);
+            MostrarRegistrosFiltro(viewInv.btnCategoria3.getText());            
+        }   
+        if(e.getSource() == viewAddProduct.btnCategoria4){
+            viewAddProduct.setVisible(false);
+            viewInv.setVisible(true);
+            MostrarRegistrosFiltro(viewInv.btnCategoria4.getText());            
+        }   
+        
+        //Boton para Filtrar los registros de la Tabla
+        if(e.getSource()== viewInv.btnFiltrar){
+            String Categoria = viewInv.CBoxFiltro.getSelectedItem().toString();
+            if(Categoria.equals("-- Filtros --")){
+                MostrarRegistroTabla();
+            }else{
+                MostrarRegistrosFiltro(Categoria);
+            }                
+        }
     }
     
     @Override
@@ -314,6 +305,37 @@ public class JPI_Controlador implements ActionListener, MouseListener{
         }
     }
        
+    public void MostrarRegistroTabla_Buscar(){
+        try {
+            ResultSet rst = model.getRst();
+            DefaultTableModel lamismatabla= (DefaultTableModel)viewInv.jTable1.getModel();
+            
+            
+            int filas=viewInv.jTable1.getRowCount();
+            for (int i = 0;filas>i; i++) {
+                lamismatabla.removeRow(0);
+            }
+            
+            String Registro[]=new String[7];
+            while(rst.next()){
+                
+                Registro[0]=rst.getString("Codigo");
+                Registro[1]=rst.getString("Nombre");//Nombre del Producto
+                Registro[2]=rst.getString("Unidades");
+                Registro[3]=rst.getString("Marca_Codigo"); //Nombre de la Marca
+                Registro[4]=rst.getString("Categoria");
+                Registro[5]="Modificar";
+                Registro[6]="Eliminar";
+                lamismatabla.addRow(Registro);
+            }
+            
+            viewInv.jTable1.setModel(lamismatabla);
+            viewInv.tablaDiseño();
+            
+        } catch (Exception e) { 
+            JOptionPane.showMessageDialog(null,"Error Tabla "+ e);
+        }
+    }
     
     public void btnTabla(){
         DefaultTableCellRenderer Alinear = new DefaultTableCellRenderer();
@@ -329,7 +351,6 @@ public class JPI_Controlador implements ActionListener, MouseListener{
         viewInv.jTable1.getColumnModel().getColumn(6).setCellRenderer(Alinear2);
         
     }
-
 
     public void Modificar(int f, int c){
         

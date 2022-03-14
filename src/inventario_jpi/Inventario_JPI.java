@@ -24,7 +24,6 @@ public class Inventario_JPI {
        
        JPI_Controlador JPI_C = new JPI_Controlador(JPI_L, JPI_M, JPI_I, JPI_AP);
        JPI_C.viewLogin.setVisible(true);
-       JPI_C.mouseListener();       
     }
     
 }
