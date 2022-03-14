@@ -71,45 +71,82 @@ public class JPI_Controlador implements ActionListener, MouseListener{
         viewAddProduct.CBoxCategoria.setSelectedIndex(0);
     }
     
+    public void llenarComboBox(){
+        viewAddProduct.CBoxCategoria.removeAllItems();
+        viewAddProduct.CBoxMarca.removeAllItems();
+        viewAddProduct.CBoxProveedor.removeAllItems();
+        viewAddProduct.CBoxMarca.addItem("-- Marcas --");
+        viewAddProduct.CBoxProveedor.addItem("-- Proveedores --");
+        viewAddProduct.CBoxCategoria.addItem("-- Categorias --");
+
+                
+        ArrayList<String> Marcas = new ArrayList<String>();
+        ArrayList<String> Proveedores = new ArrayList<String>();
+        ArrayList<String> Categorias = new ArrayList<String>();
+              
+        Marcas = model.cargarMarcas();
+        for(int i=0; i<Marcas.size(); i++){
+            viewAddProduct.CBoxMarca.addItem(Marcas.get(i));
+        }
+                
+        Proveedores = model.cargarProveedores();
+        for(int i=0; i<Proveedores.size(); i++){
+            viewAddProduct.CBoxProveedor.addItem(Proveedores.get(i));
+        }
+                
+        Categorias = model.cargarCategorias();
+        for(int i=0; i<Categorias.size(); i++){
+            viewAddProduct.CBoxCategoria.addItem(Categorias.get(i));
+        }                    
+    }
+    
     
     /*Clase para darle las funciones correspondientes a cada uno de 
     los botones de las vistas*/
     public void actionPerformed(ActionEvent e) {
         
         if(e.getSource()==viewInv.btnBuscar){
-            model.Buscar(viewInv.txtBuscar.getText());
-            MostrarDatos();
-            MostrarRegistroTabla_Buscar();
-            btnTabla();
+            if(viewInv.txtBuscar.getText().equals("")){
+                JOptionPane.showMessageDialog(null, "Ingrese el Nombre de un Producto");
+            }else{
+                model.Buscar(viewInv.txtBuscar.getText());
+                MostrarDatos();
+                MostrarRegistroTabla_Buscar();
+                btnTabla();
+            }
         }
         
         switch(e.getActionCommand()){
             case "ACCEDER":
-                model.setID(Integer.parseInt(viewLogin.txtID.getText()));
-                model.setConstraseña(viewLogin.txtContraseña.getText());
-                              
-                boolean res = model.autenticar();
-                if(res == true){
-                    
-                    viewLogin.setVisible(false);
-                    viewInv.setVisible(true);
-                    
-                    MostrarRegistroTabla();
+                
+                if(viewLogin.txtID.getText().equals("")||viewLogin.txtContraseña.getText().equals("")){
+                    JOptionPane.showMessageDialog(null, "Ingrese todos los Datos");
+                }else{
+                    model.setID(Integer.parseInt(viewLogin.txtID.getText()));
+                    model.setConstraseña(viewLogin.txtContraseña.getText());
 
-                    
-                    /*Llenamos el ComboBox de Filtros con las categorias que hay 
-                    en la tabla categorias de la BD*/
-                    
-                    viewInv.CBoxFiltro.removeAllItems();//Reinciamos el comboBox cada que se inicio el sistema.
-                    viewInv.CBoxFiltro.addItem("-- Filtros --");
-                    
-                    ArrayList<String> Categorias = new ArrayList<String>();
-                    
-                    Categorias = model.cargarCategorias();//Método que obtinene todas las categoriad de la BD
-                        for(int i=0; i<Categorias.size(); i++){
-                        viewInv.CBoxFiltro.addItem(Categorias.get(i)); //Se llena el ComboBox
-                    }
-                        
+                    boolean res = model.autenticar();
+                    if(res == true){
+
+                        viewLogin.setVisible(false);
+                        viewInv.setVisible(true);
+
+                        MostrarRegistroTabla();
+
+
+                        /*Llenamos el ComboBox de Filtros con las categorias que hay 
+                        en la tabla categorias de la BD*/
+
+                        viewInv.CBoxFiltro.removeAllItems();//Reinciamos el comboBox cada que se inicio el sistema.
+                        viewInv.CBoxFiltro.addItem("-- Filtros --");
+
+                        ArrayList<String> Categorias = new ArrayList<String>();
+
+                        Categorias = model.cargarCategorias();//Método que obtinene todas las categoriad de la BD
+                            for(int i=0; i<Categorias.size(); i++){
+                            viewInv.CBoxFiltro.addItem(Categorias.get(i)); //Se llena el ComboBox
+                        }
+                    }    
                 }                
             break;
             
@@ -117,36 +154,15 @@ public class JPI_Controlador implements ActionListener, MouseListener{
                 viewInv.setVisible(false);
                 viewAddProduct.setVisible(true);
                 
-                viewAddProduct.CBoxMarca.addItem("-- Marcas --");
-                viewAddProduct.CBoxProveedor.addItem("-- Proveedores --");
-                viewAddProduct.CBoxCategoria.addItem("-- Categorias --");
-
-                
-                ArrayList<String> Marcas = new ArrayList<String>();
-                ArrayList<String> Proveedores = new ArrayList<String>();
-                ArrayList<String> Categorias = new ArrayList<String>();
-                
-                Marcas = model.cargarMarcas();
-                for(int i=0; i<Marcas.size(); i++){
-                    viewAddProduct.CBoxMarca.addItem(Marcas.get(i));
-                }
-                
-                Proveedores = model.cargarProveedores();
-                for(int i=0; i<Proveedores.size(); i++){
-                    viewAddProduct.CBoxProveedor.addItem(Proveedores.get(i));
-                }
-                
-                Categorias = model.cargarCategorias();
-                for(int i=0; i<Categorias.size(); i++){
-                    viewAddProduct.CBoxCategoria.addItem(Categorias.get(i));
-                }
+                llenarComboBox();
 
             break;
             
             case "GUARDAR":
-                if(viewAddProduct.txtNombre.equals("")||viewAddProduct.txtDescripcion.equals("")||
-                    viewAddProduct.txtUnidades.equals("")||viewAddProduct.CBoxMarca.equals("-- Marcas --")
-                    ||viewAddProduct.CBoxProveedor.equals("-- Proveedores --")||viewAddProduct.CBoxCategoria.equals("-- Categorias --")){
+                if(viewAddProduct.txtNombre.getText().equals("")||viewAddProduct.txtDescripcion.getText().equals("")||
+                    viewAddProduct.txtUnidades.getText().equals("")||viewAddProduct.CBoxMarca.getSelectedItem().toString().equals("-- Marcas --")
+                    ||viewAddProduct.CBoxProveedor.getSelectedItem().toString().equals("-- Proveedores --")||
+                        viewAddProduct.CBoxCategoria.getSelectedItem().toString().equals("-- Categorias --")){
                     
                     JOptionPane.showMessageDialog(null, "Lleno todos los campos");
 
@@ -158,11 +174,9 @@ public class JPI_Controlador implements ActionListener, MouseListener{
                     model.setProveedor(viewAddProduct.CBoxProveedor.getSelectedItem().toString());
                     model.setCetegoria(viewAddProduct.CBoxCategoria.getSelectedItem().toString());
                     
-                    model.agregarProductos();
+                    model.agregarProductos();                    
                     
-                    viewAddProduct.CBoxCategoria.removeAllItems();
-                    viewAddProduct.CBoxMarca.removeAllItems();
-                    viewAddProduct.CBoxProveedor.removeAllItems();
+                    llenarComboBox();
                     limpiarCajasText();
                 }                
             break;
@@ -180,7 +194,10 @@ public class JPI_Controlador implements ActionListener, MouseListener{
         if(columna == 5){
             //JOptionPane.showMessageDialog(null, "Booton Modificar: Fila: "+ fila + "Columna: "+columna);
             Modificar(fila, columna);   
+        }else if(columna == 6){
+            Eliminar(fila);
         }
+        
         
         if(e.getSource()== viewInv.btnSalir){
             viewInv.setVisible(false);
@@ -369,7 +386,25 @@ public class JPI_Controlador implements ActionListener, MouseListener{
             }
             bandera=false;
         }
-    }      
+    }
+    
+    public void Eliminar(int f){
+        
+        if(bandera==false){
+            viewInv.jTable1.setEnabled(true);
+            bandera=true;
+        }else{
+            viewInv.jTable1.setEnabled(false);
+             int Codigo = Integer.parseInt(viewInv.jTable1.getValueAt(f, 0).toString());
+            
+            model.Eliminar(Codigo);
+            if(model.getRes()>0){
+                JOptionPane.showMessageDialog(null,"Registro Eliminado Correctamente");
+                MostrarRegistroTabla();
+            }
+            bandera=false;
+        }
+    }   
 
     /*Muestra en la tabla los registros según la categoría seleccionada en la vista*/
     public void MostrarRegistrosFiltro(String Filtro){

@@ -417,6 +417,21 @@ public class JPI_Modelo {
             System.out.print("Error al buscar: " + e.toString() + "\n" + SQL);
 	}
     }
+    
+    public void Eliminar(int Codigo){
+	try {
+            sentencia = con.createStatement();
+            SQL = "DELETE FROM productos WHERE Codigo=?" ;
+            preparar = con.prepareStatement(SQL);
+                       
+            preparar.setInt(1, Codigo);
+                        
+            res = preparar.executeUpdate();
+            preparar.close();
+        }catch (SQLException e) {
+            System.out.print("error: " + e.toString() + "\n" + SQL);
+        }        
+    }
 
 }
 
